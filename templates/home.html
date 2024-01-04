@@ -1,0 +1,24 @@
+{%extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>HOMEPAGE {{name}}</h1>
+<!-- <button>register</button> -->
+<button onclick="window.location.href='{% url 'register' %}'">Register</button>
+
+<form action ="{% url 'login' %}" method = "post">
+    {% csrf_token %}
+    Enter your Username : <input type ="text" name="username"><br>
+    Enter your Password : <input type ="password" name="password"><br>
+    <input type="submit">
+
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+
+</form>
+
+{% endblock %}
